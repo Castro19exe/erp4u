@@ -97,6 +97,7 @@ Route::controller(PurchaseOrderController::class)->group(function () {
     Route::get('/purchaseOrder/edit/{pONumber}', 'PurchaseOrderEdit')->name('purchaseOrder.edit');
     Route::post('/purchaseOrder/update', 'PurchaseOrderUpdate')->name('purchaseOrder.update');
     Route::get('/purchaseOrderC/disable/{pONumber}', 'PurchaseOrderCDisable')->name('purchaseOrderC.disable');
+    Route::get('/purchaseOrderC/delete/{id}', 'PurchaseOrderCDelete')->name('purchaseOrderC.delete');
     Route::get('/purchaseOrderD/delete/{id}', 'PurchaseOrderDDelete')->name('purchaseOrderD.delete');
 });
 

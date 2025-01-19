@@ -25,12 +25,20 @@
                             <div class="form-group row mb-3">
                                 <label for="code" class="col-sm-1 col-form-label">Code</label>
                                 <div class="col-sm-2">
-                                    <input id="code" name="name" class="form-control" type="text" value="{{ $product->name }}">
+                                    <input id="code" name="code" class="form-control" type="text" value="{{ $product->code }}">
                                 </div>
 
-                                <!-- Product Description -->
-                                <label for="description" class="col-sm-1 col-form-label">Description</label>
+                                <!-- Product Name -->
+                                <label for="name" class="col-sm-1 col-form-label">Name</label>
                                 <div class="col-sm-8">
+                                    <input id="name" name="name" class="form-control" type="text" value="{{ $product->name }}">
+                                </div>
+                            </div>
+
+                            <!-- Product Description -->
+                            <div class="row mb-3">
+                                <label for="description" class="col-sm-1 col-form-label">Description</label>
+                                <div class="form-group col-sm-11">
                                     <input id="description" name="description" class="form-control" type="text" value="{{ $product->description }}">
                                 </div>
                             </div>

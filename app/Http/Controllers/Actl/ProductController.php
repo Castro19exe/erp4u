@@ -46,15 +46,8 @@ class ProductController extends Controller {
         }
 
         try {
-            $lastCode = Product::select(DB::raw('CAST(code AS UNSIGNED) as numeric_code'))
-            ->orderBy('numeric_code', 'desc')
-            ->pluck('numeric_code')
-            ->first();
-
-            $newCode = $lastCode + 1;
-
             Product::insert([
-                'code' => $newCode,
+                'code' => $request->code,
                 'name' => $request->name,
                 'description' => $request->description,
                 'family' => $request->family,
@@ -121,6 +114,7 @@ class ProductController extends Controller {
             }
 
             Product::findOrFail($product_id)->update([
+                'code' => $request->code,
                 'name' => $request->name,
                 'description' => $request->description,
                 'image' => $save_url,
@@ -138,7 +132,6 @@ class ProductController extends Controller {
             return redirect()->route('product.all')->with($notification);
         } 
         catch (Exception $e) {
-            dd($e->getMessage());
             $notification = [
                 'message' => 'Product Updated Unsuccessfully. ' . $e->getMessage(),
                 'alert-type' => 'error',

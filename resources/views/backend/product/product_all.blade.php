@@ -22,7 +22,7 @@
                             <thead>
                                 <tr>
                                     <th>Ln</th>
-                                    <th>Product Code</th>
+                                    <th>Code</th>
                                     <th>Description</th>
                                     <th>Image</th>
                                     <th>Unit</th>

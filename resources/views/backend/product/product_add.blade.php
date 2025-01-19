@@ -20,11 +20,18 @@
                         <br>
                         <form method="post" action="{{ route('product.store') }}" id="myForm" enctype="multipart/form-data">
                             @csrf
+                            <!-- Product Code -->
+                            <div class="row mb-3">
+                                <label for="code" class="col-sm-2 col-form-label">Product Code</label>
+                                <div class="form-group col-sm-10">
+                                    <input id="code" name="code" class="form-control" type="text">
+                                </div>
+                            </div>
                             <!-- Product Name -->
                             <div class="row mb-3">
-                                <label for="code" class="col-sm-2 col-form-label">Product Name</label>
+                                <label for="name" class="col-sm-2 col-form-label">Product Name</label>
                                 <div class="form-group col-sm-10">
-                                    <input id="code" name="name" class="form-control" type="text">
+                                    <input id="name" name="name" class="form-control" type="text">
                                 </div>
                             </div>
                             <!-- Product Description -->
@@ -78,7 +85,6 @@
                             <input type="text" id="descriptionTaxRate" class="form-control" placeholder="Description" readonly>
                         </div>
                         </div>
-
                             <!-- Product Image -->
                             <div class="row mb-3">
                                 <label for="product_Image" class="col-sm-2 col-form-label">Product Image</label>

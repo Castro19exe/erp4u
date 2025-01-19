@@ -71,7 +71,7 @@ class PurchaseOrderController extends Controller
                 'productFamily' => $request->family,
                 'productUnit' => $product['unit'],
                 'quantity' => $product['stock'],
-                'sellingPrice' => 100, // valores para teste
+                'sellingPrice' => $product['price'],
                 'status' => 1,
                 'taxRateCode' => $product['taxRateCode'],
                 'unitPrice' => $product['price'],
@@ -215,7 +215,7 @@ class PurchaseOrderController extends Controller
                 ]);
     
                 $notification = [
-                'message' => 'Product Disabled Successfully.',
+                'message' => 'Order Disabled Successfully.',
                 'alert-type' => 'success',];
     
                 return redirect()->back()->with($notification);
@@ -226,7 +226,7 @@ class PurchaseOrderController extends Controller
                 ]);
     
                 $notification = [
-                'message' => 'Product Enabled Successfully.',
+                'message' => 'Order Enabled Successfully.',
                 'alert-type' => 'success',];
     
                 return redirect()->back()->with($notification);
@@ -234,7 +234,22 @@ class PurchaseOrderController extends Controller
         }
         catch (Exception $e) {
             $notification = [
-            'message' => 'Product Disabled Unsuccessfully. ' . $e->getMessage(),
+            'message' => 'Order Disabled Unsuccessfully. ' . $e->getMessage(),
+            'alert-type' => 'error',];
+
+            return redirect()->back()->with($notification);
+        }
+    }
+
+    public function PurchaseOrderCDelete($id) {
+        $pOC = PurchaseOrderC::findOrFail($id);
+
+        try {
+            $pOC->delete();
+        }
+        catch (Exception $e) {
+            $notification = [
+            'message' => 'Order Deleted Unsuccessfully. ' . $e->getMessage(),
             'alert-type' => 'error',];
 
             return redirect()->back()->with($notification);
@@ -274,8 +289,6 @@ class PurchaseOrderController extends Controller
             return redirect()->back()->with($notification);
         }
         catch (Exception $e) {
-            dd($e->getMessage());
-
             $notification = [
             'message' => 'Product Deleted Unsuccessfully. ' . $e->getMessage(),
             'alert-type' => 'error',];
